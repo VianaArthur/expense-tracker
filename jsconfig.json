@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "module": "commonjs",
+    "sourceMap": true,
+    "paths": {
+      "$root/*": ["./*"],
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["**/*", "**/*.json"],
+  "exclude": ["node_modules"]
+}
