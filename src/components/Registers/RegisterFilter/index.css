@@ -1,0 +1,25 @@
+.registers-filter {
+  color: #f2f2f2;
+}
+
+.registers-filter_control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.registers-filter label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.registers-filter select {
+  font: inherit;
+  padding: 0.5rem 3rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #1d1e26;
+  color: #1d1e26;
+}

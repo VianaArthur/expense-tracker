@@ -1,0 +1,29 @@
+.registers-total {
+  color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.registers-total p {
+  font-weight: bold;
+
+  margin-bottom: 0.5rem;
+  padding: 0;
+  text-align: justify;
+}
+
+.registers-total p span {
+  font-weight: 400;
+  font-size: 1.35rem;
+}
+
+.registers-total p span.positive {
+  color: #50fa7b;
+}
+
+.registers-total p span.negative {
+  color: #ff79c6;
+}

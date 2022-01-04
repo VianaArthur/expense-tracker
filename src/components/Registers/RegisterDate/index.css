@@ -1,0 +1,26 @@
+.register-date {
+  display: flex;
+  flex-direction: column;
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 1px solid #f8f8f2;
+  background-color: #282a36;
+  color: #8be9fd;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-date_month {
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.register-date_year {
+  font-size: 0.85rem;
+}
+
+.register-date_day {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
