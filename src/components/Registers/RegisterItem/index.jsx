@@ -1,22 +1,35 @@
-import ExpenseDate from 'components/Registers/RegisterDate';
+import RegisterDate from 'components/Registers/RegisterDate';
 import Card from 'components/Card';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import './index.css';
 
-const ExpenseItem = ({ description, amount, date, isExpense }) => {
+const RegisterItem = ({ description, amount, date, isExpense }) => {
   return (
     <li>
       <Card className="register-item">
-        <ExpenseDate date={date} />
+        <RegisterDate date={date} />
 
         <div className="register-item_description">
           <h2>{description}</h2>
 
-          <div
-            className={
-              'register-item_price ' + (isExpense ? 'expense' : 'income')
-            }
-          >
-            R$ {amount.toLocaleString()}
+          <div className="register-item_actions">
+            <div className="register-item_icons">
+              <span title="Edit">
+                <FaEdit />
+              </span>
+
+              <span title="Delete">
+                <FaTrashAlt />
+              </span>
+            </div>
+
+            <div
+              className={
+                'register-item_price ' + (isExpense ? 'expense' : 'income')
+              }
+            >
+              R$ {amount.toLocaleString()}
+            </div>
           </div>
         </div>
       </Card>
@@ -24,4 +37,4 @@ const ExpenseItem = ({ description, amount, date, isExpense }) => {
   );
 };
 
-export default ExpenseItem;
+export default RegisterItem;
