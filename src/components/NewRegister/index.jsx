@@ -35,6 +35,7 @@ const NewRegister = ({ onAddRegister }) => {
         <RegisterForm
           onSaveRegisterData={saveRegisterDataHandler}
           onCancel={toggleEditingHandler}
+          title={isExpense ? 'Expense' : 'Income'}
         />
       ) : (
         <>

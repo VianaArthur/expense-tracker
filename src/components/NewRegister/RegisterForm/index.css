@@ -25,3 +25,11 @@
 .new-register_actions {
   text-align: right;
 }
+
+.new-register_title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  width: 100%;
+  font-size: 1.5rem;
+}

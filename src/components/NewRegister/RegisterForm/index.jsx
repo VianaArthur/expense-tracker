@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './index.css';
 
-const RegisterForm = ({ onSaveRegisterData, onCancel }) => {
+const RegisterForm = ({ onSaveRegisterData, onCancel, title }) => {
   const [descriptionState, setDescriptionState] = useState('');
   const descriptionChangeHandler = (e) => {
     setDescriptionState(e.target.value);
@@ -40,6 +40,8 @@ const RegisterForm = ({ onSaveRegisterData, onCancel }) => {
   return (
     <form onSubmit={submitFormHandler}>
       <div className="new-register_controls">
+        <span className="new-register_title">{title}</span>
+
         <div className="new-register_control">
           <label htmlFor="name">Description</label>
           <input
