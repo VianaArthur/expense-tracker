@@ -2,9 +2,9 @@ import { useState } from 'react';
 import './index.css';
 
 const RegisterForm = ({ onSaveRegisterData, onCancel }) => {
-  const [titleState, setTitleState] = useState('');
-  const titleChangeHandler = (e) => {
-    setTitleState(e.target.value);
+  const [descriptionState, setDescriptionState] = useState('');
+  const descriptionChangeHandler = (e) => {
+    setDescriptionState(e.target.value);
   };
 
   const [amountState, setAmountState] = useState('');
@@ -21,7 +21,7 @@ const RegisterForm = ({ onSaveRegisterData, onCancel }) => {
     e.preventDefault();
 
     const registerData = {
-      title: titleState,
+      description: descriptionState,
       amount: +amountState,
       date: new Date(dateState.split('-')),
     };
@@ -32,7 +32,7 @@ const RegisterForm = ({ onSaveRegisterData, onCancel }) => {
   };
 
   const clearFormHandler = () => {
-    setTitleState('');
+    setDescriptionState('');
     setAmountState('');
     setDateState('');
   };
@@ -41,14 +41,14 @@ const RegisterForm = ({ onSaveRegisterData, onCancel }) => {
     <form onSubmit={submitFormHandler}>
       <div className="new-register_controls">
         <div className="new-register_control">
-          <label htmlFor="name">Title</label>
+          <label htmlFor="name">Description</label>
           <input
             required
             type="text"
             name="name"
             id="name"
-            value={titleState}
-            onChange={titleChangeHandler}
+            value={descriptionState}
+            onChange={descriptionChangeHandler}
           />
         </div>
 

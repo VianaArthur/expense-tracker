@@ -7,7 +7,7 @@ const RegisterList = ({ items }) => {
       {items.map((item) => (
         <ExpenseItem
           key={item.id}
-          title={item.title}
+          description={item.description}
           amount={item.amount}
           date={item.date}
           isExpense={item.isExpense}

@@ -45,6 +45,7 @@ const NewRegister = ({ onAddRegister }) => {
           >
             Add Income
           </button>
+
           <button
             className="expense"
             onClick={() => setTypeHandler(true)}
