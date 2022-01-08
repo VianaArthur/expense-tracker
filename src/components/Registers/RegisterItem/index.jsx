@@ -3,7 +3,14 @@ import Card from 'components/Card';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import './index.css';
 
-const RegisterItem = ({ description, amount, date, isExpense }) => {
+const RegisterItem = ({
+  description,
+  amount,
+  date,
+  isExpense,
+  onDeleteRegister,
+  id,
+}) => {
   return (
     <li>
       <Card className="register-item">
@@ -18,7 +25,7 @@ const RegisterItem = ({ description, amount, date, isExpense }) => {
                 <FaEdit />
               </span>
 
-              <span title="Delete">
+              <span title="Delete" onClick={() => onDeleteRegister(id)}>
                 <FaTrashAlt />
               </span>
             </div>

@@ -8,7 +8,7 @@ import RegistersTotal from 'components/Registers/RegisterTotal';
 import { getUniqueListByKey } from 'utils/listUtils';
 import './index.css';
 
-const Registers = ({ items }) => {
+const Registers = ({ items, onDeleteRegister }) => {
   const [filteredYearState, setFilteredYearState] = useState('0');
   const filterChangeHandler = (selectedYear) => {
     setFilteredYearState(selectedYear);
@@ -40,7 +40,10 @@ const Registers = ({ items }) => {
           selectedYear={filteredYearState}
         />
 
-        <RegistersList items={filteredRegisters} />
+        <RegistersList
+          items={filteredRegisters}
+          onDeleteRegister={onDeleteRegister}
+        />
 
         <RegistersTotal items={filteredRegisters} />
       </Card>

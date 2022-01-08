@@ -6,13 +6,25 @@ import NewRegister from 'components/NewRegister';
 const App = () => {
   const [registersState, setRegistersState] = useState([]);
 
-  const addRegistersHandler = (register) => {
+  const addRegisterHandler = (register) => {
     setRegistersState((prevState) => {
-      const newRegister = [...prevState, register];
+      const newRegisters = [...prevState, register];
 
       // save to local storage
-      localStorage.setItem('registers', JSON.stringify(newRegister));
-      return newRegister;
+      localStorage.setItem('registers', JSON.stringify(newRegisters));
+      return newRegisters;
+    });
+  };
+
+  const deleteRegisterHandler = (registerId) => {
+    setRegistersState((prevState) => {
+      const filteredRegisters = prevState.filter(
+        (register) => register.id !== registerId
+      );
+
+      // save to local storage
+      localStorage.setItem('registers', JSON.stringify(filteredRegisters));
+      return filteredRegisters;
     });
   };
 
@@ -32,8 +44,11 @@ const App = () => {
 
   return (
     <>
-      <NewRegister onAddRegister={addRegistersHandler} />
-      <Registers items={registersState} />
+      <NewRegister onAddRegister={addRegisterHandler} />
+      <Registers
+        items={registersState}
+        onDeleteRegister={deleteRegisterHandler}
+      />
     </>
   );
 };

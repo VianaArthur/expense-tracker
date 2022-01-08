@@ -1,7 +1,7 @@
 import RegisterItem from 'components/Registers/RegisterItem';
 import './index.css';
 
-const RegisterList = ({ items }) => {
+const RegisterList = ({ items, onDeleteRegister }) => {
   return (
     <ul className="registers-list">
       {items.map((item) => (
@@ -12,6 +12,7 @@ const RegisterList = ({ items }) => {
           amount={item.amount}
           date={item.date}
           isExpense={item.isExpense}
+          onDeleteRegister={onDeleteRegister}
         />
       ))}
     </ul>
