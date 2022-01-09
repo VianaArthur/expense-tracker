@@ -49,12 +49,9 @@ const RegisterForm = ({
       setAmountState(registerToEdit.amount);
       const date = JSON.stringify(registerToEdit.date).slice(1, 11);
       setDateState(date);
-
-      console.log('SetStateData', typeof registerToEdit.date);
     }
   }, [registerToEdit]);
 
-  console.log('dateState', dateState);
   return (
     <form onSubmit={submitFormHandler}>
       <div className="new-register_controls">
