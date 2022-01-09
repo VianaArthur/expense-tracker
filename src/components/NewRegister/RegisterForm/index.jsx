@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './index.css';
 
-const RegisterForm = ({ onSaveRegisterData, onCancel, title }) => {
+const RegisterForm = ({
+  onSaveRegisterData,
+  onCancel,
+  title,
+  onEditRegister,
+  registerToEdit,
+}) => {
   const [descriptionState, setDescriptionState] = useState('');
   const descriptionChangeHandler = (e) => {
     setDescriptionState(e.target.value);
@@ -26,7 +32,9 @@ const RegisterForm = ({ onSaveRegisterData, onCancel, title }) => {
       date: new Date(dateState.split('-')),
     };
 
-    onSaveRegisterData(registerData);
+    !registerToEdit
+      ? onSaveRegisterData(registerData)
+      : onEditRegister(registerToEdit.id, registerData);
 
     clearFormHandler();
   };
@@ -37,6 +45,18 @@ const RegisterForm = ({ onSaveRegisterData, onCancel, title }) => {
     setDateState('');
   };
 
+  useEffect(() => {
+    if (registerToEdit) {
+      setDescriptionState(registerToEdit.description);
+      setAmountState(registerToEdit.amount);
+      const date = JSON.stringify(registerToEdit.date).slice(1, 11);
+      setDateState(date);
+
+      console.log('SetStateData', typeof registerToEdit.date);
+    }
+  }, [registerToEdit]);
+
+  console.log('dateState', dateState);
   return (
     <form onSubmit={submitFormHandler}>
       <div className="new-register_controls">

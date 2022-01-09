@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
 import Card from 'components/Card';
 import RegisterForm from 'components/NewRegister/RegisterForm';
 import './index.css';
 
-const NewRegister = ({ onAddRegister }) => {
-  const [isEditingState, setIsEditingState] = useState(false);
+const NewRegister = ({
+  onAddRegister,
+  onEditRegister,
+  registerToEdit,
+  isEditingData,
+  setIsEditingData,
+}) => {
+  const [isEditingState, setIsEditingState] = useState(isEditingData);
   const [isExpense, setIsExpense] = useState(false);
 
   const setTypeHandler = (isExpenseType) => {
@@ -16,6 +22,7 @@ const NewRegister = ({ onAddRegister }) => {
 
   const toggleEditingHandler = () => {
     setIsEditingState((prevState) => !prevState);
+    setIsEditingData((prevState) => !prevState);
   };
 
   const saveRegisterDataHandler = (data) => {
@@ -29,12 +36,18 @@ const NewRegister = ({ onAddRegister }) => {
     toggleEditingHandler();
   };
 
+  useEffect(() => {
+    setIsEditingState(isEditingData);
+  }, [isEditingData]);
+
   return (
     <Card className="new-register">
       {isEditingState ? (
         <RegisterForm
           onSaveRegisterData={saveRegisterDataHandler}
           onCancel={toggleEditingHandler}
+          onEditRegister={onEditRegister}
+          registerToEdit={registerToEdit}
           title={isExpense ? 'Expense' : 'Income'}
         />
       ) : (

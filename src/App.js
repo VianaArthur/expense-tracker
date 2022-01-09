@@ -5,6 +5,8 @@ import NewRegister from 'components/NewRegister';
 
 const App = () => {
   const [registersState, setRegistersState] = useState([]);
+  const [isEditingData, setIsEditingData] = useState(false);
+  const [registerToEdit, setRegisterToEdit] = useState(null);
 
   const addRegisterHandler = (register) => {
     setRegistersState((prevState) => {
@@ -28,6 +30,32 @@ const App = () => {
     });
   };
 
+  const saveEditedRegisterHandler = (id, updatedRegister) => {
+    setRegistersState((prevState) => {
+      const updatedRegisters = prevState.map((register) => {
+        if (register.id === id) {
+          return {
+            ...register,
+            ...updatedRegister,
+          };
+        }
+        return register;
+      });
+
+      // save to local storage
+      localStorage.setItem('registers', JSON.stringify(updatedRegisters));
+      return updatedRegisters;
+    });
+  };
+
+  const editRegisterHandler = (id) => {
+    // get the register to edit
+    const register = registersState.find((register) => register.id === id);
+
+    setRegisterToEdit(register);
+    setIsEditingData((prevState) => !prevState);
+  };
+
   useEffect(() => {
     const localData = localStorage.getItem('registers');
     if (localData) {
@@ -44,10 +72,18 @@ const App = () => {
 
   return (
     <>
-      <NewRegister onAddRegister={addRegisterHandler} />
+      <NewRegister
+        onAddRegister={addRegisterHandler}
+        onEditRegister={saveEditedRegisterHandler}
+        isEditingData={isEditingData}
+        setIsEditingData={setIsEditingData}
+        registerToEdit={registerToEdit}
+      />
+
       <Registers
         items={registersState}
         onDeleteRegister={deleteRegisterHandler}
+        onEditRegister={editRegisterHandler}
       />
     </>
   );

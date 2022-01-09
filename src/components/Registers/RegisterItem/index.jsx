@@ -9,6 +9,7 @@ const RegisterItem = ({
   date,
   isExpense,
   onDeleteRegister,
+  onEditRegister,
   id,
 }) => {
   return (
@@ -22,7 +23,7 @@ const RegisterItem = ({
           <div className="register-item_actions">
             <div className="register-item_icons">
               <span title="Edit">
-                <FaEdit />
+                <FaEdit onClick={() => onEditRegister(id)} />
               </span>
 
               <span title="Delete" onClick={() => onDeleteRegister(id)}>
