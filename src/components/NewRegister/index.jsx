@@ -25,14 +25,18 @@ const NewRegister = ({
     setIsEditingData((prevState) => !prevState);
   };
 
-  const saveRegisterDataHandler = (data) => {
-    const registerData = {
-      ...data,
-      isExpense,
-      id: nanoid(),
-    };
+  const saveRegisterDataHandler = (id, data) => {
+    if (id) {
+      onEditRegister(id, data);
+    } else {
+      const registerData = {
+        ...data,
+        isExpense,
+        id: nanoid(),
+      };
 
-    onAddRegister(registerData);
+      onAddRegister(registerData);
+    }
     toggleEditingHandler();
   };
 
@@ -46,7 +50,6 @@ const NewRegister = ({
         <RegisterForm
           onSaveRegisterData={saveRegisterDataHandler}
           onCancel={toggleEditingHandler}
-          onEditRegister={onEditRegister}
           registerToEdit={registerToEdit}
           title={isExpense ? 'Expense' : 'Income'}
         />

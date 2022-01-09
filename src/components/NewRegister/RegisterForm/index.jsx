@@ -32,9 +32,7 @@ const RegisterForm = ({
       date: new Date(dateState.split('-')),
     };
 
-    !registerToEdit
-      ? onSaveRegisterData(registerData)
-      : onEditRegister(registerToEdit.id, registerData);
+    onSaveRegisterData(registerToEdit?.id, registerData);
 
     clearFormHandler();
   };
