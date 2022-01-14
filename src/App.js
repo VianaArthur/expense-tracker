@@ -78,6 +78,7 @@ const App = () => {
         isEditingData={isEditingData}
         setIsEditingData={setIsEditingData}
         registerToEdit={registerToEdit}
+        setRegisterToEdit={setRegisterToEdit}
       />
 
       <Registers

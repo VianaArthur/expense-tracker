@@ -5,8 +5,9 @@ const RegisterForm = ({
   onSaveRegisterData,
   onCancel,
   title,
-  onEditRegister,
   registerToEdit,
+  isEditingData,
+  setRegisterToEdit,
 }) => {
   const [descriptionState, setDescriptionState] = useState('');
   const descriptionChangeHandler = (e) => {
@@ -38,19 +39,27 @@ const RegisterForm = ({
   };
 
   const clearFormHandler = () => {
+    setRegisterToEdit(null);
     setDescriptionState('');
     setAmountState('');
     setDateState('');
   };
 
+  const cancelFormHandler = () => {
+    debugger;
+    clearFormHandler();
+    onCancel();
+  };
+
   useEffect(() => {
-    if (registerToEdit) {
+    debugger;
+    if (registerToEdit && isEditingData) {
       setDescriptionState(registerToEdit.description);
       setAmountState(registerToEdit.amount);
       const date = JSON.stringify(registerToEdit.date).slice(1, 11);
       setDateState(date);
     }
-  }, [registerToEdit]);
+  }, [registerToEdit, isEditingData]);
 
   return (
     <form onSubmit={submitFormHandler}>
@@ -98,7 +107,11 @@ const RegisterForm = ({
 
       <div className="new-register_actions">
         <button type="submit">Confirm</button>
-        <button className="alternative" type="reset" onClick={onCancel}>
+        <button
+          className="alternative"
+          type="reset"
+          onClick={cancelFormHandler}
+        >
           Cancel
         </button>
       </div>

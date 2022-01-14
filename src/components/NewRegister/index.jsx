@@ -8,9 +8,10 @@ import './index.css';
 const NewRegister = ({
   onAddRegister,
   onEditRegister,
-  registerToEdit,
   isEditingData,
   setIsEditingData,
+  registerToEdit,
+  setRegisterToEdit,
 }) => {
   const [isEditingState, setIsEditingState] = useState(isEditingData);
   const [isExpense, setIsExpense] = useState(false);
@@ -21,6 +22,7 @@ const NewRegister = ({
   };
 
   const toggleEditingHandler = () => {
+    debugger;
     setIsEditingState((prevState) => !prevState);
     setIsEditingData((prevState) => !prevState);
   };
@@ -41,8 +43,12 @@ const NewRegister = ({
   };
 
   useEffect(() => {
+    debugger;
+    if (registerToEdit && isEditingData) {
+      setIsExpense(registerToEdit.isExpense);
+    }
     setIsEditingState(isEditingData);
-  }, [isEditingData]);
+  }, [isEditingData, registerToEdit]);
 
   return (
     <Card className="new-register">
@@ -51,6 +57,8 @@ const NewRegister = ({
           onSaveRegisterData={saveRegisterDataHandler}
           onCancel={toggleEditingHandler}
           registerToEdit={registerToEdit}
+          isEditingData={isEditingData}
+          setRegisterToEdit={setRegisterToEdit}
           title={isExpense ? 'Expense' : 'Income'}
         />
       ) : (
