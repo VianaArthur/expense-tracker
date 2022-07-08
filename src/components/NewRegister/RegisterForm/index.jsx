@@ -46,13 +46,11 @@ const RegisterForm = ({
   };
 
   const cancelFormHandler = () => {
-    debugger;
     clearFormHandler();
     onCancel();
   };
 
   useEffect(() => {
-    debugger;
     if (registerToEdit && isEditingData) {
       setDescriptionState(registerToEdit.description);
       setAmountState(registerToEdit.amount);

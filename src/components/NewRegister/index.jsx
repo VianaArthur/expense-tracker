@@ -22,7 +22,6 @@ const NewRegister = ({
   };
 
   const toggleEditingHandler = () => {
-    debugger;
     setIsEditingState((prevState) => !prevState);
     setIsEditingData((prevState) => !prevState);
   };
@@ -43,7 +42,6 @@ const NewRegister = ({
   };
 
   useEffect(() => {
-    debugger;
     if (registerToEdit && isEditingData) {
       setIsExpense(registerToEdit.isExpense);
     }
